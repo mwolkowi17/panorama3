@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { CSS3DObject } from 'three/addons/renderers/CSS3DRenderer.js';
 import { scene } from './index.js';
 import { panorama2 } from './panorama2.js';
+import { display } from './display_sample.js';
 
 //panorama image
 
@@ -44,10 +45,10 @@ imageDiv.addEventListener('pointerdown', () => {
      scene.remove(panorama1);
      imageDiv.style.visibility='hidden';
      imageDivInfo.style.visibility='hidden';
-     infoDiv.style.visibility='hidden';
+     //infoDiv.style.visibility='hidden';
 
-   scene.remove(panorama1);
-   scene.add(panorama2);
+   
+    scene.add(panorama2);
    
 })
 
@@ -68,28 +69,30 @@ panorama1.add(navLabelInfo)
 
 //info display
 
-const infoDiv = document.createElement('div');
-  infoDiv.className = 'label';
-  infoDiv.textContent = 'znacznik';
-  infoDiv.style.width = '30px';
-  infoDiv.style.height = '30px';
-  infoDiv.style.color = 'black'
-  infoDiv.style.backgroundColor = 'white';
-  infoDiv.style.fontSize = '2px';
+// const infoDiv = document.createElement('div');
+//   infoDiv.className = 'label';
+//   infoDiv.textContent = 'znacznik';
+//   infoDiv.style.width = '30px';
+//   infoDiv.style.height = '30px';
+//   infoDiv.style.color = 'black'
+//   infoDiv.style.backgroundColor = 'white';
+//   infoDiv.style.fontSize = '2px';
 
-  const infoLabel = new CSS3DObject(infoDiv);
-  infoLabel.position.set(20, 0, -30);
-  infoLabel.element.style.overflow = 'visible';
-  infoDiv.style.visibility='hidden';
+//   const infoLabel = new CSS3DObject(infoDiv);
+//   infoLabel.position.set(20, 0, -30);
+//   infoLabel.element.style.overflow = 'visible';
+//   infoDiv.style.visibility='hidden';
   
-  navLabelInfo.add(infoLabel)
+//   navLabelInfo.add(infoLabel)
 
 //info actiones
 
 imageDivInfo.addEventListener('pointerdown', () => {
   console.log('click_info');
-  infoDiv.style.visibility='visible';
-  imageDivInfo.style.visibility = 'hidden'
+  //infoDiv.style.visibility='visible';
+  imageDivInfo.style.visibility = 'hidden';
+  document.body.appendChild(display);
+  display.style.visibility='visible';
 
   
 })
