@@ -2,6 +2,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from '../node_modules/three/examples/jsm/controls/OrbitControls';
 import { panorama1 } from './panorama1';
+//import { panorama1add } from './panorama_callbacks';
 import { CSS3DRenderer } from 'three/addons/renderers/CSS3DRenderer.js';
 
 
@@ -12,12 +13,9 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true;
 document.body.appendChild(renderer.domElement);
-//document.body.appendChild(display);
-
 
 const labelRenderer = new CSS3DRenderer();
 labelRenderer.setSize(window.innerWidth, window.innerHeight);
-
 labelRenderer.domElement.style.position = 'absolute';
 labelRenderer.domElement.style.top = '0px';
 document.body.appendChild( labelRenderer.domElement );

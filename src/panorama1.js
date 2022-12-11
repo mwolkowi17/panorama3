@@ -13,15 +13,17 @@ geometry.scale(- 1, 1, 1);
 const texture = new THREE.TextureLoader().load('./double_panoramic.png');
 const material = new THREE.MeshBasicMaterial({ map: texture });
 
-export const panorama1 = new THREE.Mesh(geometry, material);
+function panoramaAdd(){
+  const panorama = new THREE.Mesh(geometry, material);
+  return panorama;
+}
+
+//export const panorama1 = new THREE.Mesh(geometry, material);
+export const panorama1 = panoramaAdd();
+
+
 
 //navigation
-
-// const navDiv = document.createElement('div');
-// navDiv.className = 'label';
-// navDiv.textContent = 'znacznik';
-// navDiv.style.color = 'white';
-// navDiv.style.fontSize = '1px'
 
 const imageDiv = document.createElement('img');
 imageDiv.className = 'imagenav';
@@ -34,9 +36,9 @@ const navLabel = new CSS3DObject(imageDiv);
 navLabel.position.set(1, -30, -30);
 navLabel.element.style.overflow = 'visible';
 
-
-
 panorama1.add(navLabel)
+
+
 
 // navigation actions
 
@@ -45,10 +47,7 @@ imageDiv.addEventListener('pointerdown', () => {
      scene.remove(panorama1);
      imageDiv.style.visibility='hidden';
      imageDivInfo.style.visibility='hidden';
-     //infoDiv.style.visibility='hidden';
-
-   
-    scene.add(panorama2);
+     scene.add(panorama2);
    
 })
 
@@ -65,8 +64,13 @@ const navLabelInfo = new CSS3DObject(imageDivInfo);
 navLabelInfo.position.set(20, 0, -30);
 navLabelInfo.element.style.overflow = 'visible';
 
-panorama1.add(navLabelInfo)
+//1st option
+//panorama1.add(navLabelInfo)
 
+//2nd option with setTimeout callback
+setTimeout(function(){
+  panorama1.add(navLabelInfo)
+},500)
 
 
 //info actiones
