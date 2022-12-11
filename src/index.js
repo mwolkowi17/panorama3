@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { OrbitControls } from '../node_modules/three/examples/jsm/controls/OrbitControls';
 import { panorama1 } from './panorama1';
 import { CSS3DRenderer } from 'three/addons/renderers/CSS3DRenderer.js';
-import { display } from './display_sample';
+
 
 export const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
